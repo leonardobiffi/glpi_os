@@ -1,6 +1,6 @@
 <?php
 // define glpi_os version
-define('PLUGIN_OS_VERSION', '0.0.8');
+define('PLUGIN_OS_VERSION', '0.1');
 
 class PluginOsConfig extends CommonDBTM {
   static protected $notable = true;
@@ -11,8 +11,8 @@ class PluginOsConfig extends CommonDBTM {
   static function getMenuContent() {
     global $CFG_GLPI;
     $menu = array();
-    $menu['title']   = __('Os','os');
-    $menu['page']    = "/plugins/os/front/os.php";
+    $menu['title']   = __('Ordem de Serviço','OS');
+    $menu['page']    = "/plugins/os_remix/front/os.php";
    	return $menu;
   }
 }
@@ -30,7 +30,7 @@ function plugin_version_os() {
   return [
     'name'      => 'OS',
     'version' 	=> PLUGIN_OS_VERSION ,
-    'author'		=> '<a href="mailto:juniormarcati@gmail.com"> Júnior Marcati </b> </a>',
+    'author'		=> '<a href="mailto:leonardobiffi@outlook.com"> Leonardo Biffi </b> </a>',
     'license'		=> 'GPLv2+',
     'homepage'	=> 'http://glpi-os.sourceforge.net',
     'requirements'   => [
