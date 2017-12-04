@@ -4,7 +4,7 @@ Plugin criado para emissão de Ordem de Serviço baseado nos dados do chamado.
 
 Para instalar o Plugin siga os passos abaixo:
 
-- Faça o download do projeto e extraia na pasta "plugins" que encontra-se na raiz do GLPI;
+- Faça o download do projeto e extraia com o nome "os" na pasta "plugins" que encontra-se na raiz do GLPI;
 - Acesse o GLPI, vá em Configurar > Plug-ins;
 - Encontre o Plug-in "OS" e click em Instalar;
 - Click em Habilitar.

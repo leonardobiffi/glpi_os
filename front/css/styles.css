@@ -11,3 +11,11 @@ td, th {text-align: left; padding: 5px;}
 .botao {height: 27px;}
 
 input[type="submit1"] {height: 27px;}
+
+hr {
+	border: 0.1px solid rgb(0, 0, 0);
+}
+
+.titulo {
+	background-color: rgb(223, 209, 209)
+}

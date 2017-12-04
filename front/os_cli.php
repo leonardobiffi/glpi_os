@@ -9,7 +9,7 @@ include ('../../../inc/includes.php');
 include ('../../../config/config.php');
 global $DB;
 Session::checkLoginUser();
-Html::header('OS', "", "plugins", "os");
+Html::header('OS Remix', "", "plugins", "os");
 echo Html::css($CFG_GLPI["root_doc"]."/css/styles.css");
 if (isset($_SESSION["glpipalette"])) {
 	echo Html::css($CFG_GLPI["root_doc"]."/css/palettes/".$_SESSION["glpipalette"].".css");
@@ -110,22 +110,22 @@ $seconds -= $minutes * 60;
 ?>
 <body>
 <!-- inicio dos botoes -->
-<div id="botoes" style="width:55%; background:#fff; margin:auto; padding-bottom:10px;"> 
+<div id="botoes" style="width:50%; background:#fff; margin:auto; padding-bottom:10px;"> 
 	<!--<input type="button" class="botao" name="configurar" value="Configurar" onclick="window.location.href='./index.php'"> -->
 	<p></p>
-	<form action="os.php" method="get">	
-	<input type="text" name="id" value="Digite a ID" onfocus="if (this.value=='Digite a ID') this.value='';" onblur="if (this.value=='') this.value='Digite a ID'" />
+	<form action="os_cli.php" method="get">	
+	<input type="text" name="id" value="ID Ordem de Serviço" onfocus="if (this.value=='ID Ordem de Serviço') this.value='';" onblur="if (this.value=='') this.value='ID Ordem de Serviço'" />
 	<input class="submit" type="submit" value="Enviar">
 	</form>
 	<p></p>
-	<a href="#" class="vsubmit" onclick="window.print();"> Imprimir </a>
+	<a href='os_cli_pdf.php?id=<?php echo $OsId; ?>' target="_blank" class="vsubmit"> Imprimir </a>
 	<a href='os_cli.php?id=<?php echo $OsId; ?>' class="vsubmit"> Usuário </a>
 	<a href='os.php?id=<?php echo $OsId; ?>' class="vsubmit"> Entidade </a>
 	<a href="index.php" class="vsubmit" style="float:right;"> Configurar </a>
 	<p></p>
 </div>
 <!-- inicio das tabelas -->
-<table style="width:55%; background:#fff; margin:auto;" border="1" cellpadding="0" cellspacing="0"> 
+<table style="width:50%; background:#fff; margin:auto;" border="1" cellpadding="0" cellspacing="0"> 
 <tr>
 <td style="padding: 0px !important;" >
 <table style="width:100%; background:#fff;" border="1">
@@ -133,7 +133,7 @@ $seconds -= $minutes * 60;
 <td width="400" colspan="2">
 <table style="width:100%;" border="0" cellpadding="0" cellspacing="0">
 <!-- tabela do logotipo -->
-<tr><td height="119" valign="middle" style="width:25%; text-align:center; margin:auto;"><img src="./img/logo_os.png" width="119" height="58" align="absmiddle"></td>
+<tr><td height="119" valign="middle" style="width:25%; text-align:center; margin:auto;"><img src="./img/logo_os.png" width="100" height="100" align="absmiddle"></td>
 <!-- tabela do titulo -->
 <td style="text-align:center;"><p><font size="4"><?php echo ($EmpresaPlugin);?></font></p>
 <p><font size="2"><?php echo ("$EnderecoPlugin - $CidadePlugin - $TelefonePlugin"); ?></font></p>
@@ -162,43 +162,7 @@ $seconds -= $minutes * 60;
 	}
 ?>
 </td></tr>
-<?php 
-	if ( $CustoTotalFinal == 0 ) {
-		echo "</tr>";
-		} else {
-			echo "<tr><td colspan=2 style=background-color:$CorPlugin><center><b><font color=$CorTextoPlugin >DETALHES DE CUSTO</font></b></center></tr></td>";
-			echo '<td height="80" colspan="2" valign="top" style="padding:10px;">';
-			echo '<table align=center width=800px border=0>';
-			echo '<tr>';
-			echo '<td><b>DESCRIÇÃO</b></td>';
-			echo '<td><b>CUSTO FIXO</b></td>';
-			echo '<td><b>CUSTO DE MATERIAL</b></td>';
-			echo '<td><b>CUSTO POR TEMPO</b></td>';
-			echo '<td><b>DURAÇÃO</b></td>';
-			echo '<td><b>CUSTO</b></td>';
-			echo '</tr>';
-			while($Escrita = $DB->fetch_assoc($ResCustoLista)){
-				echo '<tr>';
-				echo '<td>'.$Escrita['name'].'</td>';
-				echo '<td>R$ '.$Escrita['cost_fixed2'].'</td>';
-				echo '<td>R$ '.$Escrita['cost_material2'].'</td>';
-				echo '<td>R$ '.$Escrita['cost_time2'].'</td>';
-				echo '<td>'.$Escrita['Hora'].'</td>';
-				echo '<td> R$ '; 
-				echo number_format($Escrita['CustoItem'], 2, ',', '.');
-				echo '</td>'; 
-				echo '</tr>';
-			}
-			echo '<table align=center width=800px height=0 border=0>';
-			echo '<td><p style=margin-top:0px;margin-bottom:0px align=left><b>DURAÇÃO TOTAL:</b> '.$hours.'h '.$minutes.'min '.$seconds.'seg</p></td>';
-			echo '<tr>';
-			echo '<td><p style=margin-top:0px;margin-bottom:0px align=left><b>CUSTO TOTAL:</b> R$ '.$CustoTotalFinal.'</td></p>';
-			echo '</table>';
-			echo '</table>';
-			echo '<table style=width:100% align=center border=0>';
-			echo '</tr>';
-		}
-?>
+
 <table style="width:100%; background:#fff;" border="0">
 <tr><td colspan="2" style="background-color:<?php echo $CorPlugin; ?> !important";><center><b><font color="<?php echo $CorTextoPlugin; ?>">ASSINATURAS</font></b></center></tr></td>
 </table>
