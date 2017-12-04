@@ -30,7 +30,7 @@ function plugin_version_os() {
   return [
     'name'      => 'OS Remix',
     'version' 	=> PLUGIN_OS_VERSION ,
-    'author'		=> '<a href="mailto:leonardobiffi@outlook.com"> Leonardo Biffi </b> </a>',
+    'author'		=> '<a href="mailto:juniormarcati@gmail.com"> Júnior Marcati </b> </a>',
     'license'		=> 'GPLv2+',
     'homepage'	=> '',
     'requirements'   => [
